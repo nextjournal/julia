@@ -1,1 +1,1 @@
-Julia Docker image for the nextjournal.com platform
+Julia Docker image for the nextjournal.com platform.
