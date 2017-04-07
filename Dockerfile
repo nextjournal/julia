@@ -12,7 +12,7 @@ RUN julia -e 'Pkg.add("Distributions")'
 RUN julia -e 'Pkg.add("HypothesisTests")'
 RUN julia -e 'Pkg.add("GLM")'
 
-ARG PLOTLYJSJLTAG='659c6425170b32775eaee5daedb880cf5c2eadd8'
+ARG PLOTLYJSJLTAG='a1846adfcf9b3ecf52a1ede7461d698983b808c4'
 
 RUN julia -e 'Pkg.clone("https://github.com/nextjournal/PlotlyJS.jl.git")' && \
   PKG_DIR="$(julia -e 'print(Pkg.dir())')" && \
