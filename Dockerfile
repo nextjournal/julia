@@ -2,12 +2,17 @@ FROM julia:0.5.1
 
 RUN apt-get update && apt-get install -y bash curl git coreutils unzip build-essential cmake
 
-RUN julia -e 'Pkg.add("DataFrames", v"0.8.5"); using DataFrames'
-RUN julia -e 'Pkg.add("SHA", v"0.3.2"); using SHA'
-RUN julia -e 'Pkg.add("Plots", v"0.10.3"); using Plots'
-RUN julia -e 'Pkg.add("Optim", v"0.7.8"); using Optim'
-RUN julia -e 'Pkg.add("DifferentialEquations", v"1.8.0"); using DifferentialEquations'
-ARG PLOTLYJSJLTAG='a1846adfcf9b3ecf52a1ede7461d698983b808c4'
+RUN julia -e 'Pkg.add("DataFrames"); using DataFrames'
+RUN julia -e 'Pkg.add("SHA"); using SHA'
+RUN julia -e 'Pkg.add("Plots")'
+RUN julia -e 'Pkg.add("Optim")'
+RUN julia -e 'Pkg.add("DifferentialEquations")'
+RUN julia -e 'Pkg.add("Calculus")'
+RUN julia -e 'Pkg.add("Distributions")'
+RUN julia -e 'Pkg.add("HypothesisTests")'
+RUN julia -e 'Pkg.add("GLM")'
+
+ARG PLOTLYJSJLTAG='659c6425170b32775eaee5daedb880cf5c2eadd8'
 
 RUN julia -e 'Pkg.clone("https://github.com/nextjournal/PlotlyJS.jl.git")' && \
   PKG_DIR="$(julia -e 'print(Pkg.dir())')" && \
