@@ -19,5 +19,6 @@ RUN julia -e 'Pkg.clone("https://github.com/nextjournal/PlotlyJS.jl.git")' && \
   cd "${PKG_DIR}/PlotlyJS" && \
   git checkout ${PLOTLYJSJLTAG} && \
   git checkout -b "${PLOTLYJSJLTAG}-branch" && \
-  julia -e 'Pkg.checkout("PlotlyJS", ENV["PLOTLYJSJLTAG"] * "-branch", merge=false, pull=false)' && \
-  julia -e 'using PlotlyJS'
+  julia -e 'Pkg.checkout("PlotlyJS", ENV["PLOTLYJSJLTAG"] * "-branch", merge=false, pull=false)'
+
+RUN julia -e 'for pkg in keys(Pkg.installed()); try info("Compiling: $pkg"); eval(Expr(:toplevel, Expr(:using, Symbol(pkg)))); catch err warn("Unable to precompile: $pkg"); warn(err); end end'
