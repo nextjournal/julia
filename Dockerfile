@@ -12,6 +12,7 @@ RUN julia -e 'Pkg.add("Distributions")'
 RUN julia -e 'Pkg.add("HypothesisTests")'
 RUN julia -e 'Pkg.add("GLM")'
 RUN julia -e 'Pkg.add("WAV")'
+RUN julia -e 'Pkg.add("GR")'
 
 ARG PLOTLYJSJLTAG='a1846adfcf9b3ecf52a1ede7461d698983b808c4'
 
