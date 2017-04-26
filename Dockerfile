@@ -1,6 +1,6 @@
 FROM julia:0.5.1
 
-RUN apt-get update && apt-get install -y bash curl git coreutils unzip build-essential cmake lsb-release
+RUN apt-get update && apt-get install -y bash curl git coreutils unzip build-essential cmake lsb-release libx11-dev libxt-dev libxft-dev libgl1-mesa-dev
 
 RUN julia -e 'Pkg.add("DataFrames"); using DataFrames'
 RUN julia -e 'Pkg.add("SHA"); using SHA'
